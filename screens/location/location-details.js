@@ -46,7 +46,16 @@ export default function LocationDetails(){
     }
     <NB.Box p={2} flex={1}>
     
-    
+          <MapView.Circle
+        center={{
+          latitude: lat,
+          longitude: lng,
+        }}
+        radius={20}
+        strokeWidth={2}
+        strokeColor="#3399ff"
+        fillColor="#80bfff"
+      />
     </NB.Box>
     </RN.View>
          )

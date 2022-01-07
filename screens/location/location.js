@@ -15,18 +15,30 @@ import CONFIG from '../../components/config/config'
 import COLORS from '../../components/config/colors'
 //Custom core utilities
 import Loading from '../core/loading.js'
-import MapView from 'expo'
+import MapView from 'react-native-maps'
 
 export default function Locations(){
   //Start values
   const {fetchLocation,setLoading,setAuthChecking, checkAuth}=useStoreActions(actions=>actions)
   const {adminAuth,auth,loading,location}=useStoreState(state=>state)
-  const val4=""
-  const val5=""
+  const [lat,setLat]=React.useState()
+  const [lng,setLng]=React.useState()
+  const [region,setRegion] = React.useState({})
   
   //Use effect
-  React.useEffect(async()=>{
-  fetchLocation()
+  React.useEffect(()=>{
+    const reg = {
+          latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,
+    }
+  setRegion(reg)
+  setLng(location.longitude)
+  setLat(location.latitude)
+  
+    
+
   return()=>{}
   },[])
   
@@ -46,12 +58,27 @@ export default function Locations(){
      loading && <Loading/>
     }
     <NB.Box p={2} flex={1}>
-    <NB.Text>
-    Longitude: {location.longitude}
-    Latitude:  {location.latitude}
-    </NB.Text>
     
-    <MapView  initialRegion={{latitude:location.latitude,longitude:location.longitude}}/>
+    <NB.Text>
+    Longitude: {region.longitude}
+    Latitude:  {region.latitude}
+    </NB.Text>
+       <MapView  style={{width:'100%',height:'100%'}} initialRegion={region}
+         onRegionChange={(reg)=>setRegion(reg)}
+            >
+    
+        <MapView.Circle
+        center={{latitude: location.latitude,
+          longitude: location.longitude,
+          latitudeDelta: 0.0922,
+          longitudeDelta: 0.0421,}}
+        radius={40}
+        strokeWidth={30}
+        strokeColor="rgba(128, 191, 255,0.5)"
+        fillColor="#2377dd"
+      />
+    </MapView>
+ 
     </NB.Box>
     </RN.View>
          )

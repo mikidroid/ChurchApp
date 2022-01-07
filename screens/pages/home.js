@@ -22,7 +22,7 @@ import fontLoad from '../../assets/fonts/Oswald-Regular.ttf'
 
 export default function Home({navigation}){
   //Start values
-  const {setLoading,setAuthChecking, checkAuth}=useStoreActions(actions=>actions)
+  const {setLoading,fetchLocation,setAuthChecking, checkAuth}=useStoreActions(actions=>actions)
   const {adminAuth,auth,loading}=useStoreState(state=>state)
   useFonts({
     Oswald: fontLoad,
@@ -31,7 +31,7 @@ export default function Home({navigation}){
   
   //Use effect
   React.useEffect(()=>{
-    
+    fetchLocation()
     
   return()=>{}
   },[])
