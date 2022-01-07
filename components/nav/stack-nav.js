@@ -20,6 +20,8 @@ import AddAdvert from '../../screens/admin/add-advert'
 import AddLivestream from '../../screens/admin/add-livestream'
 import AddDevotional from '../../screens/admin/add-devotional'
 import AddAnnouncement from '../../screens/admin/add-announcement'
+import LocationDetails from '../../screens/location/location-details'
+import Location from '../../screens/location/location'
 import {useStoreState,useStoreActions} from 'easy-peasy'
 import HymnList from '../../screens/hymn/hymn-list'
 import HymnDetails from '../../screens/hymn/hymn-details'
@@ -116,6 +118,17 @@ export function BaseStack({navigation}){
         }
         //If no header title passed
         options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
           headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -145,6 +158,8 @@ export function BaseStack({navigation}){
       <Stack.Screen options={auth? optionAuth(CONFIG.APP_TITLE) : option(CONFIG.APP_TITLE)} name="_Home" component={Home}/>
       <Stack.Screen options={option()} name="Details" component={Details}/>
       <Stack.Screen options={option()} name="About" component={About}/>
+      <Stack.Screen options={auth? optionAuth() : option()} name="Location" component={Location}/>
+      <Stack.Screen options={auth? option() : option()} name="Location details" component={LocationDetails}/>
      </Stack.Navigator> 
      )}
      
@@ -158,6 +173,17 @@ export function DashboardStack({navigation}){
         if(title){
           header=title
           options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
             headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -182,6 +208,17 @@ export function DashboardStack({navigation}){
         }
         //If no header title passed
         options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
           headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -223,6 +260,17 @@ export function LivestreamStack({navigation}){
         if(title){
           header=title
           options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
             headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -247,6 +295,17 @@ export function LivestreamStack({navigation}){
         }
         //If no header title passed
         options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
           headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -272,7 +331,7 @@ export function LivestreamStack({navigation}){
    return(
      <Stack.Navigator>
       <Stack.Screen options={optionAuth('Live stream')} name="_Live stream" component={LiveStream}/>
-      <Stack.Screen options={optionAuth('Watch stream')} name="Livestream-details" component={LivestreamDetails}/>
+      <Stack.Screen options={option('Watch stream')} name="Livestream-details" component={LivestreamDetails}/>
      </Stack.Navigator> 
      )}
      
@@ -288,8 +347,20 @@ export function LivestreamStack({navigation}){
         let header,options
         //if header title passed
         if(title){
+
           header=title
           options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
             headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -314,6 +385,17 @@ export function LivestreamStack({navigation}){
         }
         //If no header title passed
         options ={
+           headerRight: () => (
+            <RN.TouchableOpacity
+              onPress={() => {navigation.toggleDrawer()}}>
+            <Icon2
+              name="account-circle"
+              color={COLORS.light}
+              size={30}
+              style={{marginRight:15}}
+            />
+            </RN.TouchableOpacity>
+          ),
           headerLeft: () => (
             <RN.TouchableOpacity
               onPress={() => {navigation.toggleDrawer()}}>
@@ -339,7 +421,7 @@ export function LivestreamStack({navigation}){
    return(
      <Stack.Navigator >
       <Stack.Screen options={auth? optionAuth('Hymns') : option('Hymns')} name="_Hymns" component={HymnList}/>
-      <Stack.Screen options={auth? optionAuth('Details') : option('Details')} name="Hymn-details" component={HymnDetails}/>
+      <Stack.Screen options={auth? option('Details') : option('Details')} name="Hymn-details" component={HymnDetails}/>
      </Stack.Navigator> 
       
      )}

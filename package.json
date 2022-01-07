@@ -19,6 +19,8 @@
     "expo-av": "^10.2.0",
     "expo-battery": "~6.0.3",
     "expo-device": "~4.0.3",
+    "expo-font": "~10.0.3",
+    "expo-linear-gradient": "~10.0.3",
     "expo-location": "~13.0.4",
     "expo-splash-screen": "~0.13.5",
     "expo-status-bar": "~1.1.0",
@@ -33,6 +35,8 @@
     "react-native-device-info": "^8.4.8",
     "react-native-elements": "^3.4.2",
     "react-native-gesture-handler": "~1.10.2",
+    "react-native-maps": "0.28.1",
+    "react-native-maps-directions": "^1.8.0",
     "react-native-reanimated": "~2.2.0",
     "react-native-safe-area-context": "3.3.2",
     "react-native-screens": "~3.8.0",
@@ -41,9 +45,7 @@
     "react-native-vector-icons": "^9.0.0",
     "react-native-video": "^5.2.0",
     "react-native-web": "0.17.1",
-    "react-native-webview": "^11.15.0",
-    "expo-linear-gradient": "~10.0.3",
-    "expo-font": "~10.0.3"
+    "react-native-webview": "^11.15.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

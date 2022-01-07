@@ -6,7 +6,7 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import hymnsJson from '../../components/database/hymns.json'
-
+import * as Location from 'expo-location'
 
  const store = createStore({
   loading:false,
@@ -15,6 +15,7 @@ import hymnsJson from '../../components/database/hymns.json'
   adminAuth:false,
   user:{},
   hymnsList:[],
+  location:{},
   balance:40000,
   livestreams:null,
   tips:[],
@@ -23,6 +24,7 @@ import hymnsJson from '../../components/database/hymns.json'
   bookDetails:null,
   chapters:[],
   chapterDetails:null,
+  
   
   
   setLoading:action((state,payload)=>{
@@ -37,7 +39,7 @@ import hymnsJson from '../../components/database/hymns.json'
       state.hymnsList=hymnsJson
   }),
   
-    setLivestreams:action((state,payload)=>{
+  setLivestreams:action((state,payload)=>{
       state.livestreams=payload
   }),
  
@@ -62,6 +64,10 @@ import hymnsJson from '../../components/database/hymns.json'
   
   tipDetails:action((state,payload)=>{
     state.tipDetails=payload
+  }),
+  
+  setLocation:action((state,payload)=>{
+    state.location=payload
   }),
   
   //fetch other data types
@@ -120,6 +126,7 @@ import hymnsJson from '../../components/database/hymns.json'
         email:payload.email,
         password:payload.password,
         username:payload.username,
+        level:1,
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         updated_at:firebase.firestore.FieldValue.serverTimestamp(),
     } 
@@ -161,6 +168,7 @@ import hymnsJson from '../../components/database/hymns.json'
         email:payload.email,
         password:payload.password,
         username:payload.username,
+        level:1,
         created_at: firebase.firestore.FieldValue.serverTimestamp(),
         updated_at:firebase.firestore.FieldValue.serverTimestamp(),
        } 
@@ -279,6 +287,15 @@ import hymnsJson from '../../components/database/hymns.json'
      action.setUser(data)
   }),
   
+   //fetch Location
+  fetchLocation:thunk(async(action,payload)=>{
+     let {status} = await Location.requestForegroundPermissionsAsync()
+     if( status!=='granted')
+     { RN.Alert.alert("Permission failed!")}
+     const {coords} = await Location.getCurrentPositionAsync({})
+     action.setLocation(coords)
+  }),
+  
 });
 
 export default store
@@ -307,3 +324,4 @@ const _login = await firebase.auth()
       action.setLoading(false)
     })
     */
+    

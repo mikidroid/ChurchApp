@@ -78,7 +78,7 @@ export default function Drawer({navigation}){
       label:'PCN churches nearby',
       icon:'location',
       id:3,
-      link:()=>navigation.navigate('Location'),
+      link:()=>navigation.navigate('Home',{screen:'Location'}),
       },
       {
       label:'Add livstream link',
@@ -102,7 +102,7 @@ export default function Drawer({navigation}){
       label:'Dedication',
       icon:'chevron-double-right',
       id:7,
-      link:()=>RN.Alert.alert('Dedication'),
+      link:()=>RN.Alert.alert('Dedication','This app is dedicated to my parents - Eld Chinny U. Kalu & Mrs Peace U. Kalu for their amazing support throughout my life.\n\nAlso, special appreciation to my siblings, Ezinne U. Uwbetine, Samuel Uche, Chichi Uche and Kaykay Uche.\n\n~ Mikidroid!'),
       },
     ]
     
