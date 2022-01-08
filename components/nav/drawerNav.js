@@ -66,7 +66,7 @@ export default function Drawer({navigation}){
       label:'Home',
       icon:'chevron-double-right',
       id:1,
-      link:()=>navigation.navigate('Home'),
+      link:()=>navigation.navigate('_Home'),
       },
       {
       label:'Pay tithe',
@@ -81,10 +81,10 @@ export default function Drawer({navigation}){
       link:()=>navigation.navigate('Home',{screen:'Location'}),
       },
       {
-      label:'Add livstream link',
+      label:'Stream service live',
       icon:'livestream',
       id:4,
-      link:()=>navigation.navigate('Dashboard',{screen:'Add-livestream'})
+      link:()=>navigation.navigate('Live stream')
       },
       {
       label:'About the church',
@@ -99,7 +99,7 @@ export default function Drawer({navigation}){
       link:()=>navigation.navigate('Contact'),
       },
       {
-      label:'Dedication',
+      label:'App Dedication',
       icon:'chevron-double-right',
       id:7,
       link:()=>RN.Alert.alert('Dedication','This app is dedicated to my parents - Eld Chinny U. Kalu & Mrs Peace U. Kalu for their amazing support throughout my life.\n\nAlso, special appreciation to my siblings, Ezinne U. Uwbetine, Samuel Uche, Chichi Uche and Kaykay Uche.\n\n~ Mikidroid!'),

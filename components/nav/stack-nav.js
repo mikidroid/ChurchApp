@@ -15,6 +15,8 @@ import AddTips from '../../screens/admin/add-tips'
 import Register from '../../screens/auth/register'
 import About from '../../screens/pages/about'
 import Dashboard from '../../screens/user/dashboard'
+import AdminDashboard from '../../screens/admin/dashboard'
+import Profile from '../../screens/user/profile'
 import Deposit from '../../screens/user/deposit'
 import AddAdvert from '../../screens/admin/add-advert'
 import AddLivestream from '../../screens/admin/add-livestream'
@@ -22,6 +24,7 @@ import AddDevotional from '../../screens/admin/add-devotional'
 import AddAnnouncement from '../../screens/admin/add-announcement'
 import LocationDetails from '../../screens/location/location-details'
 import Location from '../../screens/location/location'
+import Direction from '../../screens/location/direction'
 import {useStoreState,useStoreActions} from 'easy-peasy'
 import HymnList from '../../screens/hymn/hymn-list'
 import HymnDetails from '../../screens/hymn/hymn-details'
@@ -85,7 +88,7 @@ export function BaseStack({navigation}){
           options ={
            headerRight: () => (
             <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
+              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
             <Icon2
               name="account-circle"
               color={COLORS.light}
@@ -118,9 +121,9 @@ export function BaseStack({navigation}){
         }
         //If no header title passed
         options ={
-           headerRight: () => (
+            headerRight: () => (
             <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
+              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
             <Icon2
               name="account-circle"
               color={COLORS.light}
@@ -160,6 +163,7 @@ export function BaseStack({navigation}){
       <Stack.Screen options={option()} name="About" component={About}/>
       <Stack.Screen options={auth? optionAuth() : option()} name="Location" component={Location}/>
       <Stack.Screen options={auth? option() : option()} name="Location details" component={LocationDetails}/>
+      <Stack.Screen options={auth? option() : option()} name="Direction" component={Direction}/>
      </Stack.Navigator> 
      )}
      
@@ -175,7 +179,7 @@ export function DashboardStack({navigation}){
           options ={
            headerRight: () => (
             <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
+              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
             <Icon2
               name="account-circle"
               color={COLORS.light}
@@ -209,8 +213,8 @@ export function DashboardStack({navigation}){
         //If no header title passed
         options ={
            headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
+           <RN.TouchableOpacity
+              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
             <Icon2
               name="account-circle"
               color={COLORS.light}
@@ -247,7 +251,9 @@ export function DashboardStack({navigation}){
       <Stack.Screen options={optionAuth()} name="Add-devotional" component={AddDevotional}/>
       <Stack.Screen options={optionAuth()} name="Add-announcement" component={AddAnnouncement}/>
       <Stack.Screen options={optionAuth()} name="Add-advert" component={AddAdvert}/>
-      <Stack.Screen options={optionAuth()} name="Add-livestream" component={AddLivestream}/>
+      <Stack.Screen options={option()} name="Add-livestream" component={AddLivestream}/>
+      <Stack.Screen options={optionAuth()} name="Profile" component={Profile}/>
+      <Stack.Screen options={optionAuth()} name="Admin dashboard" component={AdminDashboard}/>
      </Stack.Navigator> 
      )}
      

@@ -81,9 +81,9 @@ export default function AddLivestream({navigation}){
         
       <RE.Button 
         buttonStyle={{marginTop:10}}
-        title="Go back"
+        title="Dashboard"
         onPress={()=> {
-        navigation.navigate('Home')
+        navigation.navigate('_Dashboard')
         
         }}
         />

@@ -51,9 +51,19 @@ export default function Dashboard({navigation,route}){
     }
     <NB.Box p={2} flex={1}>
     
-     <WebView source={{ html: embed(item.title,item.link) }} 
-   
+     <WebView source={{ html: embed(item.title,item.link) }}
     />
+    { adminAuth &&
+    <NB.Button onPress={()=>{
+       const del = firebase.firestore().collection('livestreams').doc(item.id).delete()
+       if(del){
+       RN.Alert.alert("Livestream deleted!")
+       navigation.navigate('_Live stream')
+       }
+     }} bg={COLORS.dark}>
+     Delete livestream
+       </NB.Button>
+    }
     
     { /* <Video
         ref={video}

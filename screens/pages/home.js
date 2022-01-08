@@ -65,8 +65,8 @@ export default function Home({navigation}){
     
     <NB.HStack mt={2}>
     
-    <NB.Button mt={2} m={2} >Give to God</NB.Button>
-    <NB.Button isLoading variant='outline' mt={2} m={2} >PCN Nearby</NB.Button>
+    <NB.Button leftIcon={<Icon3 style={{marginTop:2}} color={COLORS.dark} name='cash' size={20} />} mt={2} m={2} >Give to God</NB.Button>
+    <NB.Button colorScheme='cyan' leftIcon={<Icon3 color='cyan' name='map-marker-radius' size={20} />} onPress={()=>navigation.navigate('Location')} variant='outline' mt={2} m={2} >PCN Churches Nearby</NB.Button>
     
     </NB.HStack>
     
@@ -86,9 +86,11 @@ export default function Home({navigation}){
           start: [0, 0],
           end: [1, 0],},
       }} borderRadius={6} mb={4} mx={2}  w='45%' >
+    <RN.TouchableOpacity onPress={()=>navigation.navigate('Live stream') }>
     <NB.Text fontWeight='700' p={7} color='#124160' >
     <Icon style={{marginBottom:15}} name='book' /> Devotional
     </NB.Text>
+    </RN.TouchableOpacity>
     </NB.Box>
 
     <NB.Box  bg={{
@@ -113,9 +115,11 @@ export default function Home({navigation}){
           start: [0, 0],
           end: [1, 0],},
       }}  borderRadius={6} my={4} mx={2} w='45%' >
+    <RN.TouchableOpacity onPress={()=>navigation.navigate('Live stream') }>
     <NB.Text p={7} fontWeight='700' color='#124160' >
     <Icon style={{marginBottom:15}} name='bullhorn' /> Events
     </NB.Text>
+    </RN.TouchableOpacity>
     </NB.Box>
 
     <NB.Box ml='auto' bg={{
@@ -124,9 +128,11 @@ export default function Home({navigation}){
           start: [0, 0],
           end: [1, 0],},
       }} borderRadius={6} my={4} mx={2} w='45%' >
+    <RN.TouchableOpacity onPress={()=>navigation.navigate('Hymns',{screen:'_Hymns'}) }>
     <NB.Text p={7} fontWeight='700' color='#124160'>
     <Icon style={{marginBottom:15}} name='music' /> Hymn book
     </NB.Text>
+    </RN.TouchableOpacity>
     </NB.Box>
     </NB.HStack>
     

@@ -66,6 +66,32 @@ export default function Dashboard({navigation,route}){
     }
     <NB.Box p={2} flex={1}>
     
+    <NB.Box
+      mb={2}
+      bg={{
+        linearGradient: {
+          colors: ['lightBlue.200', 'violet.300'],
+          start: [0, 0],
+          end: [1, 0],},
+         }}
+       p="2"
+       rounded="xl"
+       _text={{
+        fontSize: 'md',
+        fontWeight: 'medium',
+        color: 'warmGray.50',
+        textAlign: 'center',
+       }}>
+      
+   <NB.Text p={2} fontSize={20}>
+   The Revised Church Hymnary
+   </NB.Text>
+   <NB.Text p={2}>
+   Search for any Hymn by title or by RCH number.
+   </NB.Text>
+   </NB.Box>
+    
+    
     <SearchInput onChangeText={(term)=>{
       search(term)
     }} />

@@ -13,10 +13,10 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CONFIG from '../../components/config/config'
 import COLORS from '../../components/config/colors'
 
-export default function Dashboard(){
+export default function Dashboard({navigation}){
   //Start values
-  const auth=useStoreState(state=>state.auth)
-  const adminAuth=useStoreState(state=>state.adminAuth)
+    const {setLoading,setAuthChecking, checkAuth}=useStoreActions(actions=>actions)
+  const {adminAuth,auth,loading,user}=useStoreState(state=>state)
   const val3=""
   const val4=""
   const val5=""
@@ -39,7 +39,15 @@ export default function Dashboard(){
   //Main code
   return (
     <NB.Box p={2} flex={1}>
-    
+    <NB.Button mb={2} onPress={()=>navigation.navigate('Profile')}>
+    Go to profile
+    </NB.Button>
+    {
+     adminAuth &&
+    <NB.Button onPress={()=>navigation.navigate('Admin dashboard')}>
+    Go to admin
+    </NB.Button>
+    }
     </NB.Box>
          )
   
