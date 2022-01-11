@@ -72,7 +72,7 @@ export default function Drawer({navigation}){
       label:'Pay tithe',
       icon:'chevron-double-right',
       id:2,
-      link:()=>navigation.navigate('Pay tithe'),
+      link:()=>navigation.navigate('Dashboard',{screen:'Payment'}),
       },
       {
       label:'PCN churches nearby',
@@ -119,7 +119,7 @@ export default function Drawer({navigation}){
     </NB.Text>
         <NB.Text color={COLORS.light} 
        fontSize='sm'>
-    Balance: ₦{accountBal}
+    Member type: Regular
     </NB.Text>
     </NB.Box>
        <RE.Button

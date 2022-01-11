@@ -63,27 +63,51 @@ export default function LocationDetails({navigation,route}){
      loading && <Loading/>
     }
     <NB.Box p={2} flex={1}>
+    
+    <NB.Box
+    bg={{
+        linearGradient: {
+          colors: ['lightBlue.200', 'violet.300'],
+          start: [0, 0],
+          end: [1, 0],},
+       }}
+      p="2"
+      rounded="xl"
+      _text={{
+        fontSize: 'md',
+        fontWeight: 'medium',
+        color: 'warmGray.50',
+        textAlign: 'center',
+      }}>
+      
+<NB.Text p={2} fontSize={20}>
+ {data.name}
+</NB.Text>
+<NB.Text p={2}>
+    {data.formatted_address}
+</NB.Text>
+</NB.Box>
+<NB.Divider height={2} my={4} />
+
     <NB.ScrollView>
-    <NB.Text>
-    {data.name}
-    </NB.Text>
+   { data.formatted_phone_number &&
     <NB.Text>
     {data.formatted_phone_number}
     </NB.Text>
-    <NB.Text>
-    {data.formatted_address}
-    </NB.Text>
-       <NB.Text>
-    
-    </NB.Text>
-    <NB.Text>
+   }
+    <NB.Text textAlign='center'>
     Rating {data.rating}✴️
+    </NB.Text>
+    <NB.Divider my={4}/>
+    <NB.Text mb={5} fontSize={17}>
+    Comments
     </NB.Text>
       
     {
       Array.isArray(newD) && 
       newD.map((item)=>{
         return(
+        <>
     <NB.VStack>
     <NB.Text fontSize={17}>
     {item.author_name}
@@ -92,11 +116,13 @@ export default function LocationDetails({navigation,route}){
     {item.text}
     </NB.Text>
     </NB.VStack>
+    <NB.Divider/>
+    </>
         )
       })
     }
    <NB.Divider/>
-   <NB.Text>
+   <NB.Text fontSize={18}>
     Opening hours
     </NB.Text>
        { newD2.map((item)=>{

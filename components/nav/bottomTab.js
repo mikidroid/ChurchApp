@@ -1,6 +1,9 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon2 from 'react-native-vector-icons/FontAwesome5';
+import Icon3 from 'react-native-vector-icons/MaterialCommunityIcons';
 import Home from '../../screens/pages/home'
 import Details from '../../screens/pages/details'
 import Login from '../../screens/auth/login'
@@ -56,9 +59,31 @@ export function MainBottomNav({navigation}){
      <rootScreen.Navigator screenOptions={{
     headerShown: false
   }} >
-      <rootScreen.Screen name="Home" component={BaseStack}/>
-      <rootScreen.Screen name="Live stream" component={LivestreamStack}/>
-      <rootScreen.Screen name="Hymns" component={HymnStack}/>
-      <rootScreen.Screen name="Dashboard" component={DashboardStack}/>
+      <rootScreen.Screen 
+        options={{
+            tabBarIcon: ({ color, size }) => (
+            <Icon3 name="home" color={color} size={size} />
+          ),}}
+        name="Home" component={BaseStack}/>
+      <rootScreen.Screen
+        options={{
+            tabBarIcon: ({ color, size }) => (
+            <Icon3 name="access-point" color={color} size={size} />
+          ),}}
+        name="Live stream" component={LivestreamStack}/>
+      <rootScreen.Screen
+         options={{
+            tabBarIcon: ({ color, size }) => (
+            <Icon3 name="music" color={color} size={size} />
+          ),}}         
+         name="Hymns" component={HymnStack}/>
+      <rootScreen.Screen
+         options={{
+            tabBarIcon: ({ color, size }) => (
+            <Icon3 name="hexagon-multiple" color={color} size={size} />
+          ),}}
+         name="Dashboard" component={DashboardStack}/>
      </rootScreen.Navigator> 
      )}
+     
+     

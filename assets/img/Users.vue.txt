@@ -1,0 +1,51 @@
+<template>
+ <div>
+  <v-app app>
+<drawerNav></drawerNav>
+<v-content >
+ <v-container class="col-md-9 col-lg-9">
+<transition name="fade">
+ <router-view>
+ </router-view>
+ </transition>
+ </v-container>
+ </v-content>
+<br/>
+<bottomNav></bottomNav>
+ </v-app>
+ </div>
+</template>
+
+<script>
+import Vue from 'vue'
+Vue.component('bottomNav', require('./nav/bottomNav.vue').default)
+Vue.component('drawerNav', require('./nav/drawerNav.vue').default)
+
+ export default {
+     data(){
+      return{
+
+         }
+     } ,
+    
+     computed:{
+      auth(){
+       return localStorage.getItem('token')
+      }
+     },
+     
+watch: {
+      
+    },
+     methods:{
+      
+     },
+     created(){
+
+     },
+     updated(){
+
+           }
+     }
+     
+</script>

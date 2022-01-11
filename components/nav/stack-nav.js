@@ -15,8 +15,10 @@ import AddTips from '../../screens/admin/add-tips'
 import Register from '../../screens/auth/register'
 import About from '../../screens/pages/about'
 import Dashboard from '../../screens/user/dashboard'
+import Payment from '../../screens/payment/payment'
 import AdminDashboard from '../../screens/admin/dashboard'
 import Profile from '../../screens/user/profile'
+import EditProfile from '../../screens/user/edit-profile'
 import Deposit from '../../screens/user/deposit'
 import AddAdvert from '../../screens/admin/add-advert'
 import AddLivestream from '../../screens/admin/add-livestream'
@@ -253,7 +255,9 @@ export function DashboardStack({navigation}){
       <Stack.Screen options={optionAuth()} name="Add-advert" component={AddAdvert}/>
       <Stack.Screen options={option()} name="Add-livestream" component={AddLivestream}/>
       <Stack.Screen options={optionAuth()} name="Profile" component={Profile}/>
+      <Stack.Screen options={option()} name="Edit profile" component={EditProfile}/>
       <Stack.Screen options={optionAuth()} name="Admin dashboard" component={AdminDashboard}/>
+      <Stack.Screen options={optionAuth('Give to God')} name="Payment" component={Payment}/>
      </Stack.Navigator> 
      )}
      
