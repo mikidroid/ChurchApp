@@ -32,406 +32,75 @@ import HymnList from '../../screens/hymn/hymn-list'
 import HymnDetails from '../../screens/hymn/hymn-details'
 import LiveStream from '../../screens/livestream/livestreams'
 import LivestreamDetails from '../../screens/livestream/livestream-details'
+import {optionAuth,option} from './options'
 
-//Options
-const option=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-          header=title
-          options ={
-           title:header,
-           headerStyle:{
-             backgroundColor:COLORS.dark,
-           },
-            headerTintColor:COLORS.light,
-           headerTitleStyle:{
-           //  fontWeight:'bold',
-             fontFamily:'Oswald',
-             textAlign:'center'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-           headerStyle:{
-          //   backgroundColor:'#6515ea',
-     
-           },
-        //   headerTintColor:'#fff',
-           headerTitleStyle:{
-            // fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options }
-        
-//AuthStack
-export function AuthStack({navigation}){
+
+ //AuthStack
+ export function AuthStack({navigation}){
    const Stack = createNativeStackNavigator()
    return(
      <Stack.Navigator>
-      <Stack.Screen options={option()} name="_Login" component={Login}/>
-      <Stack.Screen options={option()} name="Register" component={Register}/>
+      <Stack.Screen options={option(navigation,'Login')} name="_Login" component={Login}/>
+      <Stack.Screen options={option(navigation)} name="Register" component={Register,'Login'}/>
      </Stack.Navigator> 
      )}
      
-//BaseStack
-export function BaseStack({navigation}){
-  
+  //BaseStack
+  export function BaseStack({navigation}){
   //Const
-  const {adminAuth,auth,loading}=useStoreState(state=>state)
- 
-     //Options auth
-   const optionAuth=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-          header=title
-          options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="chevron-down"
-              color={COLORS.light}
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           title:header,
-           headerStyle:{
-             backgroundColor:COLORS.dark,
-           },
-             headerTintColor:COLORS.light,
-           headerTitleStyle:{
-          //   fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-            headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-          headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="chevron-down"
-              color={COLORS.light}
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           headerStyle:{
-          //   backgroundColor:'#6515ea'
-           },
-     //      headerTintColor:'#fff',
-           headerTitleStyle:{
-           //  fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options }
+   const {adminAuth,auth,loading}=useStoreState(state=>state)
         
    const Stack = createNativeStackNavigator()
    return(
      <Stack.Navigator screenOptions={{
           headerShadowVisible: false
         }}>
-      <Stack.Screen options={auth? optionAuth(CONFIG.APP_TITLE) : option(CONFIG.APP_TITLE)} name="_Home" component={Home}/>
-      <Stack.Screen options={option()} name="Details" component={Details}/>
-      <Stack.Screen options={option()} name="About" component={About}/>
-      <Stack.Screen options={auth? optionAuth() : option()} name="Location" component={Location}/>
-      <Stack.Screen options={auth? option() : option()} name="Location details" component={LocationDetails}/>
-      <Stack.Screen options={auth? option() : option()} name="Direction" component={Direction}/>
+      <Stack.Screen options={auth? optionAuth(navigation,CONFIG.APP_TITLE) : option(navigation,CONFIG.APP_TITLE)} name="_Home" component={Home}/>
+      <Stack.Screen options={option(navigation)} name="Details" component={Details}/>
+      <Stack.Screen options={option(navigation)} name="About" component={About}/>
+      <Stack.Screen options={auth? optionAuth(navigation) : option(navigation)} name="Location" component={Location}/>
+      <Stack.Screen options={auth? option(navigation) : option(navigation)} name="Location details" component={LocationDetails}/>
+      <Stack.Screen options={auth? option(navigation) : option(navigation)} name="Direction" component={Direction}/>
      </Stack.Navigator> 
      )}
      
-//Dashboard
-export function DashboardStack({navigation}){
+  //Dashboard
+  export function DashboardStack({navigation}){
   
-   //Options auth
-   const optionAuth=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-          header=title
-          options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-            headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           title:header,
-           headerStyle:{
-        //     backgroundColor:'#6515ea'
-           },
-       //    headerTintColor:'#fff',
-           headerTitleStyle:{
-          //   fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-           headerRight: () => (
-           <RN.TouchableOpacity
-              onPress={() => {navigation.navigate('Dashboard',{screen:'Profile'})}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-          headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           headerStyle:{
-       //      backgroundColor:'#6515ea'
-           },
-        //   headerTintColor:'#fff',
-           headerTitleStyle:{
-           //  fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options }
-        
    const Stack = createNativeStackNavigator()
    return(
      <Stack.Navigator>
-      <Stack.Screen options={(props)=>optionAuth('Dashboard')} name="_Dashboard" component={Dashboard}/>
-      <Stack.Screen options={optionAuth()} name="Add-devotional" component={AddDevotional}/>
-      <Stack.Screen options={optionAuth()} name="Add-announcement" component={AddAnnouncement}/>
-      <Stack.Screen options={optionAuth()} name="Add-advert" component={AddAdvert}/>
-      <Stack.Screen options={option()} name="Add-livestream" component={AddLivestream}/>
-      <Stack.Screen options={optionAuth()} name="Profile" component={Profile}/>
-      <Stack.Screen options={option()} name="Edit profile" component={EditProfile}/>
-      <Stack.Screen options={optionAuth()} name="Admin dashboard" component={AdminDashboard}/>
-      <Stack.Screen options={optionAuth('Give to God')} name="Payment" component={Payment}/>
+      <Stack.Screen options={(props)=>optionAuth(navigation,'Dashboard')} name="_Dashboard" component={Dashboard}/>
+      <Stack.Screen options={optionAuth(navigation)} name="Add-devotional" component={AddDevotional}/>
+      <Stack.Screen options={optionAuth(navigation)} name="Add-announcement" component={AddAnnouncement}/>
+      <Stack.Screen options={optionAuth(navigation)} name="Add-advert" component={AddAdvert}/>
+      <Stack.Screen options={option(navigation)} name="Add-livestream" component={AddLivestream}/>
+      <Stack.Screen options={optionAuth(navigation)} name="Profile" component={Profile}/>
+      <Stack.Screen options={option(navigation)} name="Edit profile" component={EditProfile}/>
+      <Stack.Screen options={optionAuth(navigation)} name="Admin dashboard" component={AdminDashboard}/>
+      <Stack.Screen options={optionAuth(navigation,'Give to God')} name="Payment" component={Payment}/>
      </Stack.Navigator> 
      )}
      
-//Livestream
-export function LivestreamStack({navigation}){
-   //Options auth
-   const optionAuth=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-          header=title
-          options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-            headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           title:header,
-           headerStyle:{
-       //      backgroundColor:'#6515ea'
-           },
-      //     headerTintColor:'#fff',
-           headerTitleStyle:{
-           //  fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-          headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           headerStyle:{
-        //     backgroundColor:'#6515ea'
-           },
-        //   headerTintColor:'#fff',
-           headerTitleStyle:{
-           //  fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options }
-        
+  //Livestream
+  export function LivestreamStack({navigation}){
    const Stack = createNativeStackNavigator()
    return(
      <Stack.Navigator>
-      <Stack.Screen options={optionAuth('Live stream')} name="_Live stream" component={LiveStream}/>
-      <Stack.Screen options={option('Watch stream')} name="Livestream-details" component={LivestreamDetails}/>
+      <Stack.Screen options={optionAuth(navigation,'Live stream')} name="_Live stream" component={LiveStream}/>
+      <Stack.Screen options={option(navigation,'Watch stream')} name="Livestream-details" component={LivestreamDetails}/>
      </Stack.Navigator> 
      )}
-     
      
   //Hymn stack
   export function HymnStack({navigation}){
-  
   //Const
   const {adminAuth,auth,loading}=useStoreState(state=>state)
- 
-     //Options auth
-   const optionAuth=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-
-          header=title
-          options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-            headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           title:header,
-           headerStyle:{
-         //    backgroundColor:'#6515ea'
-           },
-       //    headerTintColor:'#fff',
-           headerTitleStyle:{
-            // fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-           headerRight: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon2
-              name="account-circle"
-              color={COLORS.light}
-              size={30}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-          headerLeft: () => (
-            <RN.TouchableOpacity
-              onPress={() => {navigation.toggleDrawer()}}>
-            <Icon
-              name="bars"
-              color="#222"
-              size={20}
-              style={{marginRight:15}}
-            />
-            </RN.TouchableOpacity>
-          ),
-           headerStyle:{
-         //    backgroundColor:'#6515ea'
-           },
-        //   headerTintColor:'#fff',
-           headerTitleStyle:{
-            // fontWeight:'bold',
-             textAlign:'center'
-           }}
-        return options }
-        
-   const Stack = createNativeStackNavigator()
+            
+  const Stack = createNativeStackNavigator()
    return(
      <Stack.Navigator >
-      <Stack.Screen options={auth? optionAuth('Hymns') : option('Hymns')} name="_Hymns" component={HymnList}/>
-      <Stack.Screen options={auth? option('Details') : option('Details')} name="Hymn-details" component={HymnDetails}/>
+      <Stack.Screen options={auth? optionAuth(navigation,'Hymns') : option(navigation,'Hymns')} name="_Hymns" component={HymnList}/>
+      <Stack.Screen options={auth? option(navigation,'Details') : option(navigation,'Details')} name="Hymn-details" component={HymnDetails}/>
      </Stack.Navigator> 
-      
      )}

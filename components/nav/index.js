@@ -7,6 +7,7 @@ import {useStoreState,useStoreActions} from 'easy-peasy'
 import Drawer from './drawerNav.js'
 import BottomNav from './bottomTab.js'
 import AuthCheck from '../../screens/auth/authCheck.js'
+import Subscription from '../../screens/auth/subscription.js'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -41,7 +42,7 @@ const option=(title)=>{
 export default function index({navigation}){
    const BottomTab = createBottomTabNavigator()
   const {checkAuth,setAuthChecking,setHymnsList}=useStoreActions(actions=>actions)
-  const {auth,authChecking,adminAuth,loading}=useStoreState(state=>state)
+  const {auth,subcribed,authChecking,adminAuth,loading}=useStoreState(state=>state)
    const DrawerNav=createDrawerNavigator()
    
    React.useEffect(()=>{
@@ -50,13 +51,18 @@ export default function index({navigation}){
    
    const Stack = createNativeStackNavigator()
    
-    if(authChecking) {return  (<AuthCheck/>)}
-   
-
+   if(authChecking) {return  (<AuthCheck/>)}
+     
+   //Render ther other navigation
    return(
-     <Stack.Navigator screenOptions={{
-    headerShown: false
-  }} >
+     <Stack.Navigator 
+       screenOptions={{headerShown: false }} 
+       >
+       {!subcribed &&
+       <Stack.Group> 
+        <Stack.Screen name='Subscription' component={Subscription}/> 
+       </Stack.Group>
+       }
       {auth?
       <Stack.Screen name='drawer' component={Drawer}/> :
       <Stack.Screen name='bottomNav' component={BottomNav}/>

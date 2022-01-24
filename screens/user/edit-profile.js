@@ -24,15 +24,16 @@ export default function Dashboard({navigation}){
   const {adminAuth,user,auth,loading}=useStoreState(state=>state)
    const toast = NB.useToast()
   const [fullname,setFullname]=React.useState(user.fullname)
-  const [phone,setPhone]=React.useState(user.phone)
-  const [email,setEmail]=React.useState(user.email)
-  const [state,setState]=React.useState(user.state)
-  const [description,setDescription]=React.useState(user.description)
-  const [arm,setArm]=React.useState(user.arm)
-  const [member_type,setMember_type]=React.useState(user.member_type)
-  const [department,setDepartment]=React.useState(user.department)
-  const [years_active,setYears_active]=React.useState(user.years_active)
-  const [gender,setGender]=React.useState(user.gender)
+const [username,setUsername]=React.useState(user.username?user.username:'')
+  const [phone,setPhone]=React.useState(user.phone?user.phone:'')
+  const [email,setEmail]=React.useState(user.email?user.email:'')
+  const [state,setState]=React.useState(user.state?user.state:'')
+  const [description,setDescription]=React.useState(user.description?user.description:'')
+  const [arm,setArm]=React.useState(user.arm?user.arm:'')
+  const [member_type,setMember_type]=React.useState(user.member_type?user.member_type:'')
+  const [department,setDepartment]=React.useState(user.department?user.department:'')
+  const [years_active,setYears_active]=React.useState(user.years_active?user.years_active:'')
+  const [gender,setGender]=React.useState(user.gender?user.gender:'')
   const val4=""
   const val5=""
   
@@ -53,9 +54,34 @@ export default function Dashboard({navigation}){
   })
   }
   
-  const updateUser=()=>{
+  const updateUser=async()=>{
+    setLoading(true)
+    const userId=firebase.auth().currentUser.uid
     const db = firebase.firestore()
-    
+    const update = await db.collection('users')
+       .doc(userId).set({
+         username:username,
+         fullname:fullname,
+         phone:phone,
+         state:state,
+         description: description,
+         arm:arm,
+         member_type:member_type,
+         department:department,
+         gender:gender,
+         years_active:years_active,
+         updated_at:firebase.firestore.FieldValue.serverTimestamp()
+       })
+       .then(()=>
+        {
+       Toast('Success','Profile updated!','success','top-left')
+       fetchUser(userId)
+       setLoading(false)
+       navigation.push('Profile')})
+       .catch(()=>{
+       Toast('Error','Profile update failed!','error','top-left')
+       setLoading(false)})
+  
   }
   
   //Main code
@@ -70,6 +96,20 @@ export default function Dashboard({navigation}){
         value={fullname}
         placeholder='Fullname'
         onChangeText={(text)=>setFullname(text)}
+        leftIcon={
+          <Icon3
+            name='chevron-right'
+            size={18}
+            color='black'
+            style={{marginRight:5}}
+          />
+        }
+      />
+      
+      <RE.Input
+        value={username}
+        placeholder='Username'
+        onChangeText={(text)=>setUsername(text)}
         leftIcon={
           <Icon3
             name='chevron-right'
@@ -99,6 +139,7 @@ export default function Dashboard({navigation}){
       <RE.Input
         placeholder='Email'
         value={email}
+        disabled
         keyboardType="email-address"
         onChangeText={(text)=>setEmail(text)}
         leftIcon={
@@ -127,7 +168,7 @@ export default function Dashboard({navigation}){
       />
       
       <RE.Input
-        value={state}
+        value={state && state}
         placeholder='State of origin'
         onChangeText={(text)=>setState(text)}
         leftIcon={
@@ -176,7 +217,7 @@ export default function Dashboard({navigation}){
         <NB.Select.Item label="Sis." value="Sis." />
       </NB.Select>
       
-           <NB.Select
+      <NB.Select
         my={2}
         SelectedValue={department}
         minWidth="200"
@@ -187,7 +228,7 @@ export default function Dashboard({navigation}){
           endIcon: <Icon3 name='chevron-right' size="5" />,
         }}
         mt={1}
-        onValueChange={(itemValue) => setMember_type(itemValue)}
+        onValueChange={(itemValue) => setDepartment(itemValue)}
       >
         <NB.Select.Item label="Music department" value="Music department" />
         <NB.Select.Item label="Prayer band" value="Prayer band" />

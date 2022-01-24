@@ -13,18 +13,17 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import CONFIG from '../../components/config/config'
 import COLORS from '../../components/config/colors'
 
-export default function Dashboard({navigation}){
+export default function Subscription({navigation}){
   //Start values
-    const {setLoading,setAuthChecking,logout, checkAuth}=useStoreActions(actions=>actions)
-  const {adminAuth,auth,loading,user}=useStoreState(state=>state)
+  const {checkAuth,setLoading,setAuthChecking}=useStoreActions(actions=>actions)
+  const {auth,adminAuth}=useStoreState(state=>state)
   const val3=""
   const val4=""
   const val5=""
   
   //Use effect
   React.useEffect(()=>{
-    
-  return()=>{}
+       
   },[])
   
   //Start commands
@@ -38,20 +37,16 @@ export default function Dashboard({navigation}){
   
   //Main code
   return (
-    <NB.Box p={2} flex={1}>
-    <NB.Button mb={2} onPress={()=>navigation.navigate('Profile')}>
-    Go to profile
-    </NB.Button>
-    {
-     adminAuth &&
-    <NB.Button onPress={()=>navigation.navigate('Admin dashboard')}>
-    Go to admin
-    </NB.Button>
-    }
-   <NB.Button mt={3} colorScheme="red" onPress={()=>logout()}>
-    Logout
-    </NB.Button>
-    </NB.Box>
+    <NB.Center p={2} flex={1}>
+    <NB.Text my={3}>
+     Subscription Expired!
+    </NB.Text>
+    <NB.Button
+    >
+    Click to subcribe
+     </NB.Button>
+    
+    </NB.Center>
          )
   
 }

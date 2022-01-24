@@ -86,30 +86,39 @@ export default function LocationDetails({navigation,route}){
 <NB.Text p={2}>
     {data.formatted_address}
 </NB.Text>
+   { data.formatted_phone_number &&
+    <NB.Text textAlign='center' my={2} fontWeight={700}>
+    {data.formatted_phone_number}
+    </NB.Text>
+   }
 </NB.Box>
 <NB.Divider height={2} my={4} />
 
     <NB.ScrollView>
-   { data.formatted_phone_number &&
-    <NB.Text>
-    {data.formatted_phone_number}
-    </NB.Text>
-   }
     <NB.Text textAlign='center'>
     Rating {data.rating}✴️
     </NB.Text>
     <NB.Divider my={4}/>
-    <NB.Text mb={5} fontSize={17}>
-    Comments
+    
+    <NB.VStack px={3}>
+    <NB.HStack >
+    <Icon 
+       style={{marginTop:5}}
+       size={16}
+       color={COLORS.secondary}
+       name="chevron-down" />
+    <NB.Text ml={2} color={COLORS.dark} fontSize={18}>
+    Comments ({newD?newD.length:0})
     </NB.Text>
+    </NB.HStack>
       
     {
       Array.isArray(newD) && 
       newD.map((item)=>{
         return(
         <>
-    <NB.VStack>
-    <NB.Text fontSize={17}>
+    <NB.VStack py={2}>
+    <NB.Text fontWeight="bold">
     {item.author_name}
     </NB.Text>
     <NB.Text>
@@ -121,18 +130,32 @@ export default function LocationDetails({navigation,route}){
         )
       })
     }
-   <NB.Divider/>
-   <NB.Text fontSize={18}>
+    </NB.VStack>
+    
+   <NB.Divider h={2}/>
+   
+    <NB.VStack mt={5} px={3}>
+    <NB.HStack >
+    <Icon 
+       style={{marginTop:5}}
+       size={16}
+       color={COLORS.secondary}
+       name="chevron-down" />
+    <NB.Text ml={2} color={COLORS.dark} fontSize={18}>
     Opening hours
     </NB.Text>
-       { newD2.map((item)=>{
-        return(
-    <NB.Text>
+    </NB.HStack>
+     { newD2.map((item)=>{
+    return(
+    <>
+    <NB.Text py={2}>
     {item}
     </NB.Text>
-        )
-      })
+    <NB.Divider/>
+    </>
+        )})
     }
+    </NB.VStack>
    
     </NB.ScrollView>
     </NB.Box>

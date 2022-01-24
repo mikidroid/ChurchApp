@@ -53,7 +53,7 @@ export default function Profile({navigation}){
     </NB.Text>
     
     <NB.Text my={1} fontSize={17} textAlign='center'>
-      {user.about? user.about : "This is your about section. tell us about yourself"}
+      {user.description? user.description : "This is your about section. tell us about yourself"}
     </NB.Text>
     
     <NB.Button onPress={()=>navigation.navigate('Edit profile')}>
@@ -99,7 +99,7 @@ export default function Profile({navigation}){
     </NB.Text>
     
     <NB.Text my={1} fontSize={15} >
-     Member type - <NB.Text color='#216799' fontWeight='light'> {user.arm}
+     Member type - <NB.Text color='#216799' fontWeight='light'> {user.member_type}
      </NB.Text>
     </NB.Text>
     
@@ -112,6 +112,9 @@ export default function Profile({navigation}){
      Years active -  <NB.Text color='#216799' fontWeight='light'>{user.years_active}
      </NB.Text>
     </NB.Text>
+    <NB.Button my={3} onPress={()=>navigation.navigate('_Dashboard')}>
+     Back to dashboard
+    </NB.Button>
     </NB.Box>
     </RN.View>
          )
