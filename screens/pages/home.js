@@ -19,26 +19,52 @@ import { useFonts } from 'expo-font';
 import Loading from '../core/loading.js'
 import {Advert} from './advert.js'
 import fontLoad from '../../assets/fonts/Oswald-Regular.ttf'
+//import Constants from 'expo-constants';
+//import * as Notifications from 'expo-notifications';
 
 export default function Home({navigation}){
   //Start values
-  const {setLoading,fetchLocation,setAuthChecking, checkAuth}=useStoreActions(actions=>actions)
-  const {adminAuth,auth,loading}=useStoreState(state=>state)
-  useFonts({
-    Oswald: fontLoad,
-  })
-  const val5=""
+  const {setLoading,
+       //  setNotification,
+  //       setExpoToken,
+         fetchLocation,
+   //      scheduleNotification,
+    //     notificationSettings,
+    //     registerNotification,
+         setAuthChecking, 
+         checkAuth}=useStoreActions(actions=>actions)
+  const {adminAuth,
+         auth,loading,
+     //    notification,
+    //     expoToken
+         }=useStoreState(state=>state)
+         
+         useFonts({Oswald: fontLoad})
+  
+//  const notificationListener=React.useRef()
+ // const notificationResponse=React.useRef()
   
   //Use effect
-  React.useEffect(()=>{
+  React.useEffect(async()=>{
     fetchLocation()
+  //  notificationSettings()
+ //   registerNotification().then(token=>setExpoToken(token))
     
-  return()=>{}
+ //   notificationListener.current=Notifications.addNotificationRecievedListener(notification=>{setNotification(notification)})
+  //  notificationResponse.current=Notifications.addNotificationResponseRecievedListener(response=>{console.log(response)})
+    
+  return()=>{
+ //   Notifications.removeNotificationSubcription(notificationListener.current)
+ //   Notifications.removeNotificationSubcription(notificationResponse.current)
+  }
   },[])
   
   //Start commands
   const com1=()=>{
-    
+ //   scheduleNotification({payload:
+ //   {title:"Feature alert",
+   //    body: "This feature isnt accessable yet!"}}
+  //   )
   }
   
   const com2=()=>{

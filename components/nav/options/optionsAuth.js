@@ -73,9 +73,9 @@ import COLORS from '../../config/colors'
             </RN.TouchableOpacity>
           ),
            headerStyle:{
-          //   backgroundColor:'#6515ea'
+             backgroundColor:COLORS.dark,
            },
-     //      headerTintColor:'#fff',
+           headerTintColor:COLORS.light,
            headerTitleStyle:{
            //  fontWeight:'bold',
              textAlign:'center'

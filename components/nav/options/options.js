@@ -30,12 +30,12 @@ export const _option=(navigation,title)=>{
         //If no header title passed
         options ={
            headerStyle:{
-          //   backgroundColor:'#6515ea',
-     
+             backgroundColor:COLORS.dark,
            },
+           headerTintColor:COLORS.light,
         //   headerTintColor:'#fff',
            headerTitleStyle:{
             // fontWeight:'bold',
-             textAlign:'center'
+             fontFamily:'Oswald',
            }}
         return options }

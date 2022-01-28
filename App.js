@@ -17,19 +17,18 @@ import { useFonts } from 'expo-font';
 
 export default function App() {
   // AsyncStorage.setItem('token', 'value')
-    firebase.initializeApp(config)
-  
-
-  
+     firebase.initializeApp(config)
   
   return (
     <StoreProvider store={store}>
     <NavigationContainer>
     <NativeBaseProvider 
-      config={{ 
-        dependencies: {
+        config={{ 
+         dependencies: {
          'linear-gradient': require('expo-linear-gradient').LinearGradient}
-       }}>
+       }} 
+       
+       >
     <Nav/>
     <StatusBar style='dark' />
     </NativeBaseProvider>

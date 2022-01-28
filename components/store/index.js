@@ -8,6 +8,7 @@ import hymnsJson from '../../components/database/hymns.json'
 import * as Location from 'expo-location'
 import Auth from './auth'
 import Livestream from './livestream'
+//import Notification from './notification'
 
  const store = createStore({
   loading:false,
@@ -46,6 +47,8 @@ import Livestream from './livestream'
   ...Auth(),
   //Livestream
   ...Livestream(),
+  //Notification
+//  ... Notification(),
 
    //fetch Location
   fetchLocation:thunk(async(action,payload)=>{

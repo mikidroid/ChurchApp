@@ -11,33 +11,6 @@ import Subscription from '../../screens/auth/subscription.js'
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const option=(title)=>{
-        let header,options
-        //if header title passed
-        if(title){
-          header=title
-          options ={
-           title:header,
-           headerStyle:{
-             backgroundColor:'#6515ea'
-           },
-           headerTintColor:'#fff',
-           headerTitleStyle:{
-             fontWeight:'bold'
-           }}
-        return options
-        }
-        //If no header title passed
-        options ={
-           headerStyle:{
-             backgroundColor:'#6515ea'
-           },
-           headerTintColor:'#fff',
-           headerTitleStyle:{
-             fontWeight:'bold'
-           }}
-        return options }
-
 
 export default function index({navigation}){
    const BottomTab = createBottomTabNavigator()
