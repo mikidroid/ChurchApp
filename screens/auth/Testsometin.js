@@ -95,35 +95,19 @@ export default function register({route,navigation}){
             style={{marginRight:5,color:'#fff'}}
           />
         } />
-        
-       <NB.HStack mt={5}>
-       <NB.Text mr={1}>
+        <NB.HStack mt={5}>
+        <NB.Text mr={1}>
         Already registered?
-       </NB.Text>
+        </NB.Text>
        <RN.TouchableOpacity
           onPress={()=>{
-            navigation.navigate('_Login')
+            navigation.navigate('Login')
           }}>
-       <NB.Text color={COLORS.primary}>
+        <NB.Text color={COLORS.primary}>
          Sign in
-       </NB.Text>
+        </NB.Text>
        </RN.TouchableOpacity>
        </NB.HStack>
-       
-       <NB.HStack mt={5}>
-       <NB.Text mr={1}>
-        Register Parish
-       </NB.Text>
-       <RN.TouchableOpacity
-          onPress={()=>{
-            navigation.navigate('Register parish')
-          }}>
-       <NB.Text color={COLORS.primary}>
-         Register
-       </NB.Text>
-       </RN.TouchableOpacity>
-       </NB.HStack>
-       
     </NB.Center>
     </RN.View>
     )

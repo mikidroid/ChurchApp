@@ -11,6 +11,7 @@ import COLORS from '../config/colors'
 import Home from '../../screens/pages/home'
 import Details from '../../screens/pages/details'
 import Login from '../../screens/auth/login'
+import RegisterParish from '../../screens/auth/register-parish'
 import AddTips from '../../screens/admin/add-tips'
 import Register from '../../screens/auth/register'
 import About from '../../screens/pages/about'
@@ -41,7 +42,8 @@ import {optionAuth,option} from './options'
    return(
      <Stack.Navigator>
       <Stack.Screen options={option(navigation,'Login')} name="_Login" component={Login}/>
-      <Stack.Screen options={option(navigation)} name="Register" component={Register,'Login'}/>
+      <Stack.Screen options={option(navigation)} name="Register" component={Register}/>
+      <Stack.Screen options={option(navigation,'Register Parish')} name="Register parish" component={RegisterParish}/>
      </Stack.Navigator> 
      )}
      

@@ -78,6 +78,7 @@ export default function Home({navigation}){
      loading && <Loading/>
     }
     <NB.Box  flex={1}>
+    <RN.ScrollView>
     <NB.VStack>
     {/*
     <NB.Box my={1} borderRadius={7} py={2} alignItems='center' >
@@ -175,6 +176,7 @@ export default function Home({navigation}){
     </NB.Text>
     
     </NB.VStack>
+    </RN.ScrollView>
     </NB.Box>
     </RN.View>
          )

@@ -35,6 +35,10 @@ export default function register({route,navigation}){
     register(form)}
   })
   
+  const _placeholder=((text)=>{
+    return (<NB.Text fontSize={16}>{text}</NB.Text>)
+  })
+  
   
   return(
     <RN.View style={{flex:1}} >
@@ -43,7 +47,22 @@ export default function register({route,navigation}){
     }
     <NB.Center flex={1} p={10}>
        <RE.Input
-        placeholder='Username'
+        label="Parish name"
+        placeholder="eg. Lekki"
+        onChangeText={(text)=>setUsername(text)}
+        leftIcon={
+          <Icon
+            name='user'
+            size={18}
+            color='black'
+            style={{marginRight:5}}
+          />
+        }
+      />
+      
+      <RE.Input
+        label="Parish Address"
+        placeholder='Address should be accurate'
         onChangeText={(text)=>setUsername(text)}
         leftIcon={
           <Icon
@@ -82,7 +101,7 @@ export default function register({route,navigation}){
         }
       />
       
-      <RE.Button title="Register" 
+      <RE.Button title="Register Parish" 
           buttonStyle={{width:350, backgroundColor:COLORS.primary}}
           onPress={()=>{
            _register()
@@ -98,25 +117,11 @@ export default function register({route,navigation}){
         
        <NB.HStack mt={5}>
        <NB.Text mr={1}>
-        Already registered?
+        Not registered?
        </NB.Text>
        <RN.TouchableOpacity
           onPress={()=>{
-            navigation.navigate('_Login')
-          }}>
-       <NB.Text color={COLORS.primary}>
-         Sign in
-       </NB.Text>
-       </RN.TouchableOpacity>
-       </NB.HStack>
-       
-       <NB.HStack mt={5}>
-       <NB.Text mr={1}>
-        Register Parish
-       </NB.Text>
-       <RN.TouchableOpacity
-          onPress={()=>{
-            navigation.navigate('Register parish')
+            navigation.navigate('Register')
           }}>
        <NB.Text color={COLORS.primary}>
          Register
