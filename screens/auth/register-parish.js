@@ -66,7 +66,7 @@ export default function register({route,navigation}){
         onChangeText={(text)=>setUsername(text)}
         leftIcon={
           <Icon
-            name='user'
+            name='chevron-right'
             size={18}
             color='black'
             style={{marginRight:5}}
@@ -75,6 +75,7 @@ export default function register({route,navigation}){
       />
       
       <RE.Input
+        label = 'Parish verified email'
         placeholder='Email'
         onChangeText={(text)=>setEmail(text)}
         leftIcon={
@@ -88,12 +89,40 @@ export default function register({route,navigation}){
       />
       
       <RE.Input
-        placeholder='Password'
-        secureTextEntry={true}
-        onChangeText={(text)=>setPassword(text)}
+        label = 'Name of customer'
+        placeholder='Your name'
+        onChangeText={(text)=>setCustomerName(text)}
         leftIcon={
           <Icon
-            name='lock'
+            name='chevron-right'
+            size={18}
+            color='black'
+            style={{marginRight:5}}
+          />
+        }
+      />
+      
+      <RE.Input
+        label = 'Customer email'
+        placeholder='Email'
+        onChangeText={(text)=>setCustomerEmail(text)}
+        leftIcon={
+          <Icon
+            name='envelope'
+            size={18}
+            color='black'
+            style={{marginRight:5}}
+          />
+        }
+      />
+      
+      <RE.Input
+        label = 'Phone number'
+        placeholder='Customer phone'
+        onChangeText={(text)=>setEmail(text)}
+        leftIcon={
+          <Icon
+            name='phone'
             size={18}
             color='black'
             style={{marginRight:5}}
