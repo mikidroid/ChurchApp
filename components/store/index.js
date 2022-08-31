@@ -8,12 +8,13 @@ import hymnsJson from '../../components/database/hymns.json'
 import * as Location from 'expo-location'
 import Auth from './auth'
 import Livestream from './livestream'
+import FetchLocation from './location'
 //import Notification from './notification'
 
  const store = createStore({
   loading:false,
   hymnsList:[],
-  location:{},
+ // location:{},
   balance:40000,
   tips:[],
   tipDetails:null,
@@ -39,9 +40,9 @@ import Livestream from './livestream'
     state.tipDetails=payload
   }),
   
-  setLocation:action((state,payload)=>{
+ /* setLocation:action((state,payload)=>{
     state.location=payload
-  }),
+  }),*/
   
   //Auth
   ...Auth(),
@@ -51,13 +52,15 @@ import Livestream from './livestream'
 //  ... Notification(),
 
    //fetch Location
+  ...FetchLocation(),
+/*
   fetchLocation:thunk(async(action,payload)=>{
      let {status} = await Location.requestForegroundPermissionsAsync()
      if( status!=='granted')
      { RN.Alert.alert("Permission failed!")}
      const {coords} = await Location.getCurrentPositionAsync({})
      action.setLocation(coords)
-  }),
+  }),*/
   
 });
 

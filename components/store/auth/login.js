@@ -19,7 +19,7 @@ export const Login = {
       .doc(userId).get()
       const user = query.data()
       
-      if(user.username=='admin' || user.level >= 3){
+      if(user.is_admin || user.username=='admin' || user.level >= 3){
        AsyncStorage.setItem('adminToken',userId)
        } 
        AsyncStorage.setItem('token',userId)
