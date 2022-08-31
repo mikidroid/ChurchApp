@@ -3,6 +3,7 @@ export default{
   secondary:'#ffd700',
   dark:"#233343",
   light:'#efefef',
+  accent:'#',
   linearGradient:(color1,color2)=>{
     const color = `
            linearGradient: {

@@ -11,6 +11,6 @@ export default{
   PLACES_API:'',
   PLACE_ID:'ChIJUXxCoXCJOxAR-x_iHCLE4hw',
   CHURCH_LNG:3.3271676,
-  CHURCH_LAT:6.4491508
-  
+  CHURCH_LAT:6.4491508,
+  ADMIN_EMAIL:'michaelphardy00@gmail.com'
 }
